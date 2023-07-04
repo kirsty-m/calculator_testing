@@ -82,6 +82,47 @@ describe('Calculator', () => {
     expect(runningTotal.textContent).toEqual('123');
   })
 
+  it('should chain multiple operations together', () => {
+    const button3 = container.getByTestId('number3');
+    fireEvent.click(button3);
+    const buttonAdd = container.getByTestId('operator-add');
+    fireEvent.click(buttonAdd);
+    const button2 = container.getByTestId('number2');
+    fireEvent.click(button2);
+    const buttonSubtract = container.getByTestId('operator-subtract');
+    fireEvent.click(buttonSubtract)
+    const button1 = container.getByTestId('number1');
+    fireEvent.click(button1);
+    const buttonEqual = container.getByTestId('operator-equals');
+    fireEvent.click(buttonEqual);
+    const runningTotal = container.getByTestId('running-total');
+    expect(runningTotal.textContent).toEqual('4');
+  })
+
+  it('should clear the running total without affecting the calculation', () => {
+    const button3 = container.getByTestId('number3');
+    fireEvent.click(button3);
+    const buttonMultiply = container.getByTestId('operator-multiply');
+    fireEvent.click(buttonMultiply);
+    const button5 = container.getByTestId('number5');
+    fireEvent.click(button5);
+    const buttonEqual = container.getByTestId('operator-equals');
+    fireEvent.click(buttonEqual);
+    const clearButton = container.getByTestId('clear');
+    fireEvent.click(clearButton);
+    const buttonAdd = container.getByTestId('operator-add');
+    fireEvent.click(buttonAdd);
+    const button4 = container.getByTestId('number4');
+    fireEvent.click(button4);
+    fireEvent.click(buttonEqual);
+    const runningTotal = container.getByTestId('running-total');
+    expect(runningTotal.textContent).toEqual('19');
+
+
+
+
+
+  })
 
 })
 
