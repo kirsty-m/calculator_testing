@@ -15,4 +15,30 @@ describe("Calculator", () => {
     cy.get('#operator-subtract').click();
     cy.get('.display').should('contain','4')
   })
+
+  it('should chain multiple operations together', () => {
+    cy.get('#number3').click();
+    cy.get('#operator_add').click();
+    cy.get('#number1').click();
+    cy.get('#operator-subtract').click();
+    cy.get('#number2').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', '2')
+  })
+
+  it('should show positive numbers correctly', () => {
+  cy.get('#number3').click();
+  cy.get('#operator_add').click();
+  cy.get('#number4').click();
+  cy.get('#operator-equals').click();
+  cy.get('.display').should('contain', '7');
+  })
+
+  it('should show negative numbers correctly', () => {
+  cy.get('#number3').click();
+  cy.get('#operator-subtract').click();
+  cy.get('#number4').click();
+  cy.get('#operator-equals').click();
+  cy.get('.display').should('contain', '-1');
+  })
 })
