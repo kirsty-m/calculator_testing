@@ -117,11 +117,6 @@ describe('Calculator', () => {
     fireEvent.click(buttonEqual);
     const runningTotal = container.getByTestId('running-total');
     expect(runningTotal.textContent).toEqual('19');
-
-
-
-
-
   })
 
 })
