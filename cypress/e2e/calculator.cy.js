@@ -41,4 +41,34 @@ describe("Calculator", () => {
   cy.get('#operator-equals').click();
   cy.get('.display').should('contain', '-1');
   })
+
+  it('should show decimal numbers correctly', () => {
+    cy.get('#number5').click();
+    cy.get('#operator-divide').click();
+    cy.get('#number2').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', '2.5');
+  })
+
+  it('should display very large numbers correctly', () => {
+    cy.get('#number1').click();
+    cy.get('#number2').click();
+    cy.get('#number3').click();
+    cy.get('#number4').click();
+    cy.get('#number5').click();
+    cy.get('#number6').click();
+    cy.get('#number7').click();
+    cy.get('#number8').click();
+    cy.get('#number9').click();
+    cy.get('#number0').click();
+    cy.get('.display').should('contain', '1234567890');
+  })
+
+  it('should display ERROR when you divide by 0', () => {
+    cy.get('#number5').click();
+    cy.get('#operator-divide').click();
+    cy.get('#number0').click();
+    cy.get('.display').should('contain', 'ERROR');
+  }
+  )
 })
