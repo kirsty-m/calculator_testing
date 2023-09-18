@@ -68,6 +68,7 @@ describe("Calculator", () => {
     cy.get('#number5').click();
     cy.get('#operator-divide').click();
     cy.get('#number0').click();
+    cy.get('#operator-equals').click();
     cy.get('.display').should('contain', 'ERROR');
   }
   )
